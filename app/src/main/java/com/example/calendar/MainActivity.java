@@ -15,6 +15,10 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.time.LocalTime;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     // Define the variable of CalendarView type and TextView type
@@ -43,6 +47,13 @@ public class MainActivity extends AppCompatActivity {
         radioBtn2 = (RadioButton) findViewById(R.id.rdbtn2);
         radioGroup = (RadioGroup) findViewById(R.id.rdbtngrp);
 
+        TextView tvDateTime = findViewById(R.id.tvDateTime);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            LocalTime time = LocalTime.now();
+            tvDateTime.setText(String.valueOf("Time " + time));
+        }
+      //  String currentDateTimeString = DateFormat.getDateTimeInstance().format(new Date());
+       // tvDateTime.setText(currentDateTimeString);
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
